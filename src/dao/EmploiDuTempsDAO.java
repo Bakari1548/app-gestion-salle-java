@@ -103,8 +103,14 @@ public class EmploiDuTempsDAO {
         c.setIntitule(rs.getString("intitule"));
         e.setCours(c);
 
-        Salle s = new Salle();
-        s.setNom(rs.getString("nom_salle"));
+        // Charger la salle complète avec son bâtiment
+        SalleDAO salleDAO = new SalleDAO();
+        Salle s = salleDAO.getSalleParId(rs.getInt("salle_id"));
+        if (s == null) {
+            // Fallback si la salle n'est pas trouvée
+            s = new Salle();
+            s.setNom(rs.getString("nom_salle"));
+        }
         e.setSalle(s);
 
         return e;

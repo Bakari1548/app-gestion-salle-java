@@ -2,6 +2,7 @@ package dao;
 
 import database.DatabaseConnection;
 import models.Salle;
+import models.Batiment;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,22 @@ public class SalleDAO {
             System.out.println("Erreur : " + e.getMessage());
         }
         return liste;
+    }
+
+    // Récupérer une salle par son ID
+    public Salle getSalleParId(int id) {
+        String sql = "SELECT * FROM salles WHERE id = ? AND est_active = 1";
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return extraireSalle(rs);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur récupération salle : " + e.getMessage());
+        }
+        return null;
     }
 
     // Rechercher salles disponibles
@@ -106,6 +123,12 @@ public class SalleDAO {
         s.setCapacite(rs.getInt("capacite"));
         s.setTypeSalle(rs.getString("type_salle"));
         s.setEstActive(rs.getInt("est_active") == 1);
+        
+        // Charger le bâtiment associé
+        BatimentDAO batimentDAO = new BatimentDAO();
+        Batiment batiment = batimentDAO.getBatimentParId(rs.getInt("batiment_id"));
+        s.setBatiment(batiment);
+        
         return s;
     }
 }

@@ -1,5 +1,7 @@
 package models;
 
+import java.awt.Rectangle;
+
 public class Batiment {
     private int id;
     private String nom;
@@ -7,6 +9,9 @@ public class Batiment {
     private String localisation;
     private int nombreEtages;
     private String description;
+    
+    // Coordonnées pour la carte interactive
+    private int x, y, largeur, hauteur;
 
     public Batiment() {}
 
@@ -35,6 +40,33 @@ public class Batiment {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    // Getters et Setters pour les coordonnées
+    public int getX() { return x; }
+    public void setX(int x) { this.x = x; }
+
+    public int getY() { return y; }
+    public void setY(int y) { this.y = y; }
+
+    public int getLargeur() { return largeur; }
+    public void setLargeur(int largeur) { this.largeur = largeur; }
+
+    public int getHauteur() { return hauteur; }
+    public void setHauteur(int hauteur) { this.hauteur = hauteur; }
+
+    // Méthode pour définir les coordonnées
+    public void setCoordonnees(int x, int y, int largeur, int hauteur) {
+        this.x = x;
+        this.y = y;
+        this.largeur = largeur;
+        this.hauteur = hauteur;
+    }
+
+    // Méthode pour vérifier si un point est dans le rectangle
+    public boolean contientPoint(int pointX, int pointY) {
+        return pointX >= x && pointX <= x + largeur && 
+               pointY >= y && pointY <= y + hauteur;
+    }
 
     @Override
     public String toString() {

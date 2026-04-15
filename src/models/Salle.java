@@ -10,6 +10,9 @@ public class Salle {
     private String typeSalle;
     private boolean estActive;
     private Batiment batiment;
+    
+    // Coordonnées pour la carte interactive
+    private int x, y, largeur, hauteur;
 
     public Salle() {}
 
@@ -51,6 +54,36 @@ public class Salle {
 
     public Batiment getBatiment() { return batiment; }
     public void setBatiment(Batiment batiment) { this.batiment = batiment; }
+
+    // Getters et Setters pour les coordonnées
+    public int getX() { return x; }
+    public void setX(int x) { this.x = x; }
+
+    public int getY() { return y; }
+    public void setY(int y) { this.y = y; }
+
+    public int getLargeur() { return largeur; }
+    public void setLargeur(int largeur) { this.largeur = largeur; }
+
+    public int getHauteur() { return hauteur; }
+    public void setHauteur(int hauteur) { this.hauteur = hauteur; }
+
+    // Méthode pour définir les coordonnées
+    public void setCoordonnees(int x, int y, int largeur, int hauteur) {
+        this.x = x;
+        this.y = y;
+        this.largeur = largeur;
+        this.hauteur = hauteur;
+    }
+
+    // Méthode pour vérifier si un point est dans le rectangle
+    public boolean contientPoint(int pointX, int pointY) {
+        return pointX >= x && pointX <= x + largeur && 
+               pointY >= y && pointY <= y + hauteur;
+    }
+
+    // Méthode pour obtenir le type (alias pour typeSalle)
+    public String getType() { return typeSalle; }
 
     @Override
     public String toString() {

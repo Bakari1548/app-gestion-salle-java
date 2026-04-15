@@ -160,10 +160,11 @@ CREATE INDEX idx_salles_type ON salles(type_salle);
 -- Utilisateurs (mot de passe: 'password123' hashé BCrypt)
 INSERT INTO utilisateurs (nom_utilisateur, mot_de_passe, email, prenom, nom, role) VALUES
                                                                                        ('admin', 'password123', 'admin@univ.edu', 'Admin', 'Systeme', 'ADMIN'),
-                                                                                       ('gestionnaire1', 'password123', 'gestionnaire@univ.edu', 'Pierre', 'Durand', 'GESTIONNAIRE'),
-                                                                                       ('prof1', 'password123', 'prof1@univ.edu', 'Marie', 'Curie', 'ENSEIGNANT'),
-                                                                                       ('prof2', 'password123', 'prof2@univ.edu', 'Albert', 'Einstein', 'ENSEIGNANT'),
-                                                                                       ('etudiant1', 'password123', 'etudiant1@univ.edu', 'Jean', 'Dupont', 'ETUDIANT');
+                                                                                       ('gestionnaire1', 'password123', 'gestionnaire@univ.edu', 'Modou', 'Ndiaye', 'GESTIONNAIRE'),
+                                                                                       ('prof1', 'password123', 'prof1@univ.edu', 'Maimouna', 'Gassama', 'ENSEIGNANT'),
+                                                                                       ('prof2', 'password123', 'prof2@univ.edu', 'Serigne Abdou', 'Diouf', 'ENSEIGNANT'),
+                                                                                       ('etudiant1', 'password123', 'etudiant1@univ.edu', 'Mariama', 'Leye', 'ETUDIANT'),
+                                                                                       ('omar', 'password123', 'etudiant1@univ.edu', 'Oumar', 'Sarr', 'ETUDIANT');
 
 -- Bâtiments
 INSERT INTO batiments (nom, code, localisation, nombre_etages, description) VALUES

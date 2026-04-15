@@ -24,6 +24,22 @@ public class BatimentDAO {
         return liste;
     }
 
+    // Récupérer un bâtiment par son ID
+    public Batiment getBatimentParId(int id) {
+        String sql = "SELECT * FROM batiments WHERE id = ?";
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return extraireBatiment(rs);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur récupération bâtiment : " + e.getMessage());
+        }
+        return null;
+    }
+
     // Ajouter un bâtiment
     public boolean ajouter(Batiment b) {
         String sql = "INSERT INTO batiments (nom, code, localisation, nombre_etages, description) " +

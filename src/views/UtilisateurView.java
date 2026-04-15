@@ -48,7 +48,7 @@ public class UtilisateurView extends JPanel {
         JButton boutonActualiser = new JButton("🔄 Actualiser");
 
         styliserBouton(boutonAjouter, new Color(100, 200, 100));
-        styliserBouton(boutonSupprimer, new Color(255, 100, 100));
+        styliserBouton(boutonSupprimer, new Color(246, 45, 45));
         styliserBouton(boutonActualiser, new Color(200, 200, 200));
 
         boutonAjouter.addActionListener(e -> ajouterUtilisateur());
